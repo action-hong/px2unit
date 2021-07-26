@@ -1,12 +1,10 @@
 ## px2unit
 
-[中文版本](/README.zh-CN.md)
-
-convert `px` to other unit，like `vw`、`rem`...
+将 `px`单位自动转化成其他单位，如 `vw`、`rem`
 
 ![preview](/demo.gif)
 
-## Support Languages
+## 支持语言
 
 - html
 - vue
@@ -19,17 +17,17 @@ convert `px` to other unit，like `vw`、`rem`...
 - tsx
 - jsx
 
-## Configurations
+## 配置
 
 > 💡 All fields must be prefixed with `px2unit.` in settings
 
 |field|Default|Description|
 |--|--|--|
-|fixedDigits|2|decimal point maximum length|
-|autoRemovePrefixZero|true|Automatically remove prefix 0|
-|addMark|false|Whether to enabled mark|
-|ingores|`[]`|Ignore file list|
-|languages|`['html', 'vue', 'css', 'postcss', 'less', 'scss', 'sass', 'stylus', 'javascriptreact', 'typescriptreact' ]`|Support language list
+|fixedDigits|2|小数点保留几位数|
+|autoRemovePrefixZero|true|小数点前为0的话，自动删去|
+|addMark|false|是否添加注释|
+|ingores|`[]`|忽略文件列表|
+|languages|`['html', 'vue', 'css', 'postcss', 'less', 'scss', 'sass', 'stylus', 'javascriptreact', 'typescriptreact' ]`|支持语言的列表
 
 ### `px2unit.transformRules`
 
@@ -37,16 +35,15 @@ this field is an array with the follow object
 
 ```ts
 interface TransformRules {
-  title?: string;
   sourceWidth: number;
   destinationWidth: number;
   unit: string;
 }
 ```
 
-the transform rule is simple, if you print `1px`, it will auto show the convert value(`${1 * destinationWidth/sourceWidth}${unit}`)
+转换规则很简单，如果你输入`1px`，插件会自动计算出结果(`${1 * destinationWidth/sourceWidth}${unit}`)
 
-for example, if you use `Viewport Width(vw)` and your design width is `375px`，you can use the follow Configurations
+举个例子，如果你使用`vw`单位来做开发，且给到你的设计稿尺寸宽度为`375`像素，那么你可以使用以下的配置:
 
 ```json
 {
@@ -62,11 +59,11 @@ for example, if you use `Viewport Width(vw)` and your design width is `375px`，
 }
 ```
 
-and it will auto convert what you want 
+插件会自动计算出结果供你选择
 
 ![demo1](/demo1.gif)
 
-default transformRules
+默认的配置
 ```js
 [
   {
@@ -87,6 +84,6 @@ default transformRules
 ]
 ```
 
-## Thanks
+## 感谢
 
 - [vscode-cssrem](https://github.com/cipchk/vscode-cssrem)

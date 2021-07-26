@@ -1,11 +1,16 @@
 {
   "name": "px2unit",
-	"displayName": "px2unit",
-	"description": "transform px to other unit",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.58.0"
-	},
+  "displayName": "px2unit",
+  "description": "transform px to other unit",
+  "publisher": "kkopite",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/action-hong/px2unit.git"
+  },
+  "engines": {
+    "vscode": "^1.58.0"
+  },
   "keywords": [
     "rem",
     "px rem",
@@ -17,12 +22,12 @@
     "px to rpx",
     "rpx to px"
   ],
-	"categories": [
+  "categories": [
     "Formatters",
     "Snippets",
-		"Other"
-	],
-	"activationEvents": [
+    "Other"
+  ],
+  "activationEvents": [
     "onLanguage:html",
     "onLanguage:vue",
     "onLanguage:css",
@@ -35,45 +40,29 @@
     "onLanguage:wxss",
     "onLanguage:javascriptreact",
     "onLanguage:typescriptreact"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-		]
-	},
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": []
+  },
   "configuration": {
     "type": "object",
     "title": "px transform other unit configuration",
     "properties": {
       "px2unit.fixedDigits": {
         "type": "number",
-        "default": 6,
-        "description": "保留小数点最大长度, default: 6"
+        "default": 2,
+        "description": "decimal point maximum length, default: 2"
       },
       "px2unit.autoRemovePrefixZero": {
         "type": "boolean",
         "default": true,
-        "description": "自动移除0开头的前缀, default: true"
+        "description": "Automatically remove prefix 0, default: true"
       },
       "px2unit.addMark": {
         "type": "boolean",
         "default": false,
-        "description": "是否启用加上标记, default: false"
-      },
-      "px2unit.hover": {
-        "type": "string",
-        "enum": [
-          "disabled",
-          "always",
-          "onlyMark"
-        ],
-        "default": "onlyMark",
-        "markdownEnumDescriptions": [
-          "%cssrem.hover.disabled%",
-          "%cssrem.hover.always%",
-          "%cssrem.hover.onlyMark%"
-        ],
-        "description": "是否启用悬停时显示转换数据, default: onlyMark"
+        "description": "Whether to enabled mark, default: false"
       },
       "px2unit.ingores": {
         "type": "array",
@@ -81,7 +70,7 @@
         "items": {
           "type": "string"
         },
-        "description": "忽略文件清单，例如：`[ 'demo.less', 'src' ]`"
+        "description": "Ignore file list, like this: `[ 'demo.less', 'src' ]`"
       },
       "px2unit.languages": {
         "type": "array",
@@ -89,7 +78,7 @@
         "items": {
           "type": "string"
         },
-        "description": "支持语言清单，默认：`[ 'html', 'vue', 'css', 'postcss', 'less', 'scss', 'sass', 'stylus', 'javascriptreact', 'typescriptreact' ]`"
+        "description": "Support language list, default: `[ 'html', 'vue', 'css', 'postcss', 'less', 'scss', 'sass', 'stylus', 'javascriptreact', 'typescriptreact' ]`"
       },
       "px2unit.transformRules": {
         "type": "array",
@@ -114,29 +103,31 @@
               "default": "px"
             }
           }
-        }
+        },
+        "description": "transform rules"
       }
     }
   },
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.58.0",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "^8.2.2",
-		"@types/node": "14.x",
-		"eslint": "^7.27.0",
-		"@typescript-eslint/eslint-plugin": "^4.26.0",
-		"@typescript-eslint/parser": "^4.26.0",
-		"glob": "^7.1.7",
-		"mocha": "^8.4.0",
-		"typescript": "^4.3.2",
-		"vscode-test": "^1.5.2"
-	}
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "14.x",
+    "@types/vscode": "^1.58.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "eslint": "^7.27.0",
+    "glob": "^7.1.7",
+    "mocha": "^8.4.0",
+    "typescript": "^4.3.2",
+    "vsce": "^1.96.1",
+    "vscode-test": "^1.5.2"
+  }
 }

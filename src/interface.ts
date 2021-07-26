@@ -3,8 +3,6 @@ export interface Config {
   fixedDigits: number;
   /** Automatically remove prefix 0, default: true */
   autoRemovePrefixZero: boolean;
-  /** Ignores `px` to `rem` when trigger command, can be set `[ \"1px\", \"0.5px\" ]`, default: [] */
-  ingoresViaCommand: string[];
   /**
    * Whether to enabled mark, default: false
    */
