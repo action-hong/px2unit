@@ -1,26 +1,123 @@
 {
-  "name": "px-transform",
-	"displayName": "px-transform",
+  "name": "px2unit",
+	"displayName": "px2unit",
 	"description": "transform px to other unit",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.58.0"
 	},
+  "keywords": [
+    "rem",
+    "px rem",
+    "px to rem",
+    "px2rem",
+    "rem to px",
+    "css rem",
+    "wxss",
+    "px to rpx",
+    "rpx to px"
+  ],
 	"categories": [
+    "Formatters",
+    "Snippets",
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:px-transform.helloWorld"
+    "onLanguage:html",
+    "onLanguage:vue",
+    "onLanguage:css",
+    "onLanguage:postcss",
+    "onLanguage:less",
+    "onLanguage:scss",
+    "onLanguage:sass",
+    "onLanguage:stylus",
+    "onLanguage:tpl",
+    "onLanguage:wxss",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
-			{
-				"command": "px-transform.helloWorld",
-				"title": "Hello World"
-			}
 		]
 	},
+  "configuration": {
+    "type": "object",
+    "title": "px transform other unit configuration",
+    "properties": {
+      "px2unit.fixedDigits": {
+        "type": "number",
+        "default": 6,
+        "description": "保留小数点最大长度, default: 6"
+      },
+      "px2unit.autoRemovePrefixZero": {
+        "type": "boolean",
+        "default": true,
+        "description": "自动移除0开头的前缀, default: true"
+      },
+      "px2unit.addMark": {
+        "type": "boolean",
+        "default": false,
+        "description": "是否启用加上标记, default: false"
+      },
+      "px2unit.hover": {
+        "type": "string",
+        "enum": [
+          "disabled",
+          "always",
+          "onlyMark"
+        ],
+        "default": "onlyMark",
+        "markdownEnumDescriptions": [
+          "%cssrem.hover.disabled%",
+          "%cssrem.hover.always%",
+          "%cssrem.hover.onlyMark%"
+        ],
+        "description": "是否启用悬停时显示转换数据, default: onlyMark"
+      },
+      "px2unit.ingores": {
+        "type": "array",
+        "default": [],
+        "items": {
+          "type": "string"
+        },
+        "description": "忽略文件清单，例如：`[ 'demo.less', 'src' ]`"
+      },
+      "px2unit.languages": {
+        "type": "array",
+        "default": [],
+        "items": {
+          "type": "string"
+        },
+        "description": "支持语言清单，默认：`[ 'html', 'vue', 'css', 'postcss', 'less', 'scss', 'sass', 'stylus', 'javascriptreact', 'typescriptreact' ]`"
+      },
+      "px2unit.transformRules": {
+        "type": "array",
+        "default": [],
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "default": ""
+            },
+            "sourceWidth": {
+              "type": "number",
+              "default": 375
+            },
+            "destinationWidth": {
+              "type": "number",
+              "default": 750
+            },
+            "unit": {
+              "type": "string",
+              "default": "px"
+            }
+          }
+        }
+      }
+    }
+  },
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
